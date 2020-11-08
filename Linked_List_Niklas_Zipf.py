@@ -6,8 +6,9 @@ class Node:
 
 
     # We define the Class Node. This Node is a Data Structure, which is needed to create linked lists.
-    # The init function creates the first Node of the linked list. A Node contains the data and the information, which element is the next element of the list.
-    # The initial Node which is created contains no data and no link, because there exists no other Node. It is the head Node of the linked List.
+    # A Node contains the data and the information, which element is the next element of the list.
+    # The constructor creates a head Node which contains no data and no link, because there exists no other Node.
+    # This head Node is the first element in the list which is needed in order to add other Nodes (elements of the list) later.
 
 
     def insert_at_beginning_ll(self, data): 
@@ -17,7 +18,8 @@ class Node:
 
     # The insert_at_beginning_ll function creates a new Node, which stores the current head Node as the next item.
     # So the new Node will be created in front of the previously first element of the linked list.
-    # As it is now the head node, the head of the linked list has to be updated.
+    # As it is now the first Node, the head of the linked list has to be updated to the new Node.
+    # If you call this function on an empty linked list, the head which was previously empty now gets replaced by this new Node.
 
 
     def len_ll(self):
@@ -46,10 +48,10 @@ class Node:
         return current_node
 
 
-    # The goto_index_ll function returns the Node at the position equal to the index which was given to the function.
+    # The goto_index_ll function returns the Node at the position of the index, which was given to the function.
     # It iterates thru the linked list until it is at the right position and then returns the Node
-    # Before it does that, it checks whether the given index is larger than the length of the list and if true, returns an error message.
-    # This function is used with the 
+    # Before it does that, it checks whether the given index is larger than the length of the list and if so, returns an error message.
+    # This function is used together with the insert_ll function, which will be explained in the next passsage. 
 
 
     def insert_ll(self, current_node, data):
@@ -61,13 +63,13 @@ class Node:
     # The insert_ll function takes in the Node after which the new Node should be inserted and the data of the new Node.
     # It creates the new Node with the next item beeing the next item of the Node, after which it should be inserted.
     # So that our new node doesn´t get skipped in the list, the pointer of the Node in front of our new Node gets updated to point to our new Node.
-    # You have to use the goto_index_ll function, to get the current node, after which the new Node should be inserted.
+    # You have to use the goto_index_ll function, to get the 'current node', after which the new Node should be inserted.
     # You could do it in these two ways:
     #
-    #   1.    linked_list.insert(linked_list.goto_index_ll(i), data)
+    #   1.    linked_list.insert_ll(linked_list.goto_index_ll(i), data)
     # or
     #   2.    x = linked_list.goto_index_ll(i)
-    #         linked_list.insert(x, data)
+    #         linked_list.insert_ll(x, data)
     #
     # You could combine these two functions into one, but for proving that insertion at any place and for any size of list is constant,
     # it is easier to have two separate functions.
